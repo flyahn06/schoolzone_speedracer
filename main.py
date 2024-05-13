@@ -7,7 +7,7 @@ target_id = {
     "ahndonggi": 1,
     "choijemo": 1,
     "jooyunjae": 4,
-    "kimminsung": 1,
+    "kimyosap": 2,
     "leesungryeol": 1,
     "shinjunghoon": 1,
     "shinwoojin": 3,
@@ -37,8 +37,8 @@ for file in files:
         for box in results[0].boxes:
             if box.id[0] == target_id[person_name]:
                 x, y, w, h = box.xywh[0]
-                print(f"{person_name} id {target_id[person_name]} -> y={y}, h={h}")
-                f.write(f"{y},{h}")
+                print(f"{person_name} id {target_id[person_name]} -> x={x}, y={y}, h={h}")
+                f.write(f"{x},{y},{h}")
                 f.write("\n")
 
         cv2.imshow("YOLOv8n - Object Tracking :: {} id {}".format(person_name, target_id[person_name]), frame)
