@@ -4,7 +4,8 @@ import cv2
 
 files = glob.glob("./resource/trim/*.mov")
 height1 = lambda y_coord, h: 190.446644-0.03590398*y_coord+0.01524424*h
-# height2 = lambda x_coord, y_coord, h: 204.8226661-0.009074452*x_coord-0.041186334*y_coord+0.009549047*h
+height2 = lambda x_coord, y_coord, h: 204.8226661-0.009074452*x_coord-0.041186334*y_coord+0.009549047*h
+height3 = lambda x_coord, y_coord, h: 195.959868+0.00561793*x_coord-0.0561879*y_coord-0.0074354*h
 
 for file in files:
     model = YOLO("./model/yolov8n.pt")
@@ -33,10 +34,10 @@ for file in files:
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 3)
             cv2.putText(
                 frame,
-                "{0:.1f}".format(height1(float(point.xywh[0][1]), float(point.xywh[0][3]))),
+                "{0:.1f}".format(height3(x1, y1, point.xywh[0][2])),
                 (x1, y1-20),
                 cv2.FONT_HERSHEY_DUPLEX,
-                0.5,
+                3,
                 (255, 255, 255),
                 1
             )
