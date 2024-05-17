@@ -163,3 +163,5 @@ resource/
 model/
 .DS_Store
 result/
+*.xlsx
+*.csv
