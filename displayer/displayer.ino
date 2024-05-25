@@ -1,3 +1,9 @@
+// +--------------+--------------+-----------------------------------------------------------------+
+// |    Author    |     Date     |                            Changed                              |
+// +--------------+--------------+-----------------------------------------------------------------+
+// |   flyahn06   |  2023/05/17  | Feat: implement digit displayer                                 |
+// +-------------+--------------+------------------------------------------------------------------+
+
 int A = 12;
 int B = 8;
 int DP  = 4;
@@ -148,7 +154,6 @@ void display(int position, int value) {
     delay(1);
 }
 
-// the setup routine  runs once when you press reset:
 void setup() {
     Serial.begin(9600);
     pinMode(A, OUTPUT);     
@@ -165,7 +170,6 @@ void setup() {
     pinMode(DP, OUTPUT);
 }
 
-// the loop routine runs over  and over again forever:
 void loop() {
     if (!Serial.available()) {
         for (int i = 0; i < 4; i++) {
@@ -176,7 +180,6 @@ void loop() {
     
     int temp = Serial.parseInt();
     Serial.read();  // 개행 skip
-    // Serial.read();
     digit = temp % 10;
     pos = (temp - digit) / 10;
     pos--;
